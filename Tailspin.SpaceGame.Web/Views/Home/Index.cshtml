@@ -65,36 +65,40 @@
                         {
                             <div class="row" style="margin-left: 5px; margin-top: 20px;">No scores match your selection.</div>
                         }
-
-                        int rank = ((Model.Page - 1) * Model.PageSize) + 1;
-                        foreach (var score in Model.Scores)
+                        else 
                         {
-                            <div class="row high-score align-items-center">
-                                <div class="col-sm-1 score-data">
-                                    @(rank++).
-                                </div>
-                                <div class="col-sm-4 score-data">
-                                    <div style="text-align: left; margin-left: 100px;">
-                                        <partial name="Profile" model="new ProfileViewModel { Profile = score.Profile, Rank = (rank - 1).ToString() }" />
-                                        <a href="" data-toggle="modal" data-target="#profile-modal-@((rank - 1).ToString())">
-                                            <img class="avatar" src="@score.Profile.AvatarUrl" alt="@score.Profile.UserName">
-                                            <div class="score-data username">
-                                                @score.Profile.UserName
-                                            </div>
-                                        </a>
+                            int rank = ((Model.Page - 1) * Model.PageSize) + 1;
+                            foreach (var score in Model.Scores)
+                            {
+                                <div class="row high-score align-items-center">
+                                    <div class="col-sm-1 score-data">
+                                        @(rank++).
+                                    </div>
+                                    <div class="col-sm-4 score-data">
+                                        <div style="text-align: left; margin-left: 100px;">
+                                            <partial name="Profile" model="new ProfileViewModel { Profile = score.Profile, Rank = (rank - 1).ToString() }" />
+                                            <a href="" data-toggle="modal" data-target="#profile-modal-@((rank - 1).ToString())">
+                                                <img class="avatar" src="@score.Profile.AvatarUrl" alt="@score.Profile.UserName">
+                                                <div class="score-data username">
+                                                    @score.Profile.UserName
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 score-data">
+                                        @score.Score.GameMode
+                                    </div>
+                                    <div class="col-sm-3 score-data">
+                                        @score.Score.GameRegion
+                                    </div>
+                                    <div class="col-sm-2 score-data">
+                                        @score.Score.HighScore.ToString("N0")
                                     </div>
                                 </div>
-                                <div class="col-sm-2 score-data">
-                                    @score.Score.GameMode
-                                </div>
-                                <div class="col-sm-3 score-data">
-                                    @score.Score.GameRegion
-                                </div>
-                                <div class="col-sm-2 score-data">
-                                    @score.Score.HighScore.ToString("N0")
-                                </div>
-                            </div>
+                            }
+
                         }
+
                     }
                     <nav aria-label="...">
                         <ul class="pagination">
