@@ -22,7 +22,7 @@ stages:
         command: buildAndPush
         buildContext: $(Build.Repository.LocalPath)
         repository: $(webRepository)
-        dockerfile: '$(Build.SourcesDirectory)/Tailspin.SpaceGame.Web/Dockerfile'
+        dockerfile: '$(Build.SourcesDirectory)/Tailspin.SpaceGame.Web/Dockerfile.develop'
         containerRegistry: 'Docker Container'
         tags: |
           $(tag)
